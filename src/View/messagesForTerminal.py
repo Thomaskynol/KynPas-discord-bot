@@ -29,5 +29,5 @@ def loadedCogMessage(cogName: str):
 def cleanTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
     
-def botLogMessage(message: str):
-    print(Fore.CYAN + message)
+def botErrorMessage(message: str):
+    print(Fore.RED + message)
