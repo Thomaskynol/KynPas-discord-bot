@@ -1,0 +1,1 @@
+gcc executor.c -o executor.exe
