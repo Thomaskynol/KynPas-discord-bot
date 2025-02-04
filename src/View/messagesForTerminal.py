@@ -31,3 +31,6 @@ def cleanTerminal():
     
 def botErrorMessage(message: str):
     print(Fore.RED + message)
+    
+def botLogMessage(message: str):
+    print(Fore.CYAN + message)
