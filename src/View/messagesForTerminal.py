@@ -26,7 +26,7 @@ def botIsClosedMessage():
 def loadedCogMessage(cogName: str):
     print(Fore.GREEN + f"Loaded {cogName}")
     
-def cleanedTerminalMessage():
+def cleanTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
     
 def botLogMessage(message: str):
