@@ -1,1 +1,1 @@
-gcc executor.c -o executor.exe
+gcc executor.c -o discordBot.exe
