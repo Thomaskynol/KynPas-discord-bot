@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from colorama import Fore, Back, Style, init
 
 init(autoreset=True)
@@ -23,9 +24,6 @@ def botIsClosedMessage():
     print(Fore.RED + "======================================== Bot is closed! ===========================================")
     print(Fore.RED + "==================================================================================================")
     
-def loadedCogMessage(cogName: str):
-    print(Fore.GREEN + f"Loaded {cogName}")
-    
 def cleanTerminal():
     os.system('cls' if os.name == 'nt' else 'clear')
     
@@ -33,4 +31,7 @@ def botErrorMessage(message: str):
     print(Fore.RED + message)
     
 def botLogMessage(message: str):
-    print(Fore.CYAN + message)
+    print(Fore.LIGHTBLACK_EX + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + Fore.LIGHTBLUE_EX + " INFO     " + Fore.MAGENTA + message)
+
+def loadedCogMessage(cogName: str):
+    botLogMessage("cog loaded: " + cogName)

@@ -6,7 +6,6 @@ import time
 
 import discord
 from discord.ext import commands
-from discord import app_commands
 
 from myBotInfo import botToken
 from myBotInfo import myServerID
@@ -22,12 +21,21 @@ bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
 async def on_ready():
+    await loadCogs()
     await bot.tree.sync(guild=discord.Object(id=myServerID))
     messagesForTerminal.cleanTerminal()
     messagesForTerminal.botIsReadyForUseMessage()
     
+def startBot():
+    signal.signal(signal.SIGINT, redirectSignalToCloseBot)
+    try:
+        bot.run(botToken)
+    finally:
+        sys.exit(0)
+    
 async def closeBot():
     messagesForTerminal.cleanTerminal()
+
     messagesForTerminal.closingBotMessage()
     await bot.close()
     messagesForTerminal.cleanTerminal()
@@ -37,8 +45,13 @@ async def closeBot():
 def redirectSignalToCloseBot(signum, frame):
     asyncio.create_task(closeBot())
 
-signal.signal(signal.SIGINT, redirectSignalToCloseBot)
-try:
-    bot.run(botToken)
-finally:
-    sys.exit(0)
+async def loadCogs():
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    controllers_path = os.path.join(script_dir, 'Controllers')
+
+    for filename in os.listdir(controllers_path):
+        if filename.endswith('.py') and filename != '__init__.py':
+            await bot.load_extension(f'Controllers.{filename[:-3]}')
+            messagesForTerminal.loadedCogMessage(filename[:-3])
+
+startBot()
