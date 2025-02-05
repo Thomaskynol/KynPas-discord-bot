@@ -1,9 +1,10 @@
 .vscode/
-
 venv/
 __pycache__/
 *.py[cod]
 *$py.class
 
+# this is confidential information ...
 myBotInfo.py
 robuxPrice.py
+pixInfo.py
