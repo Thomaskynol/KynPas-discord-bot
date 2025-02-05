@@ -11,7 +11,7 @@ class Robux(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @app_commands.command(name="calculate_robux_price", description="Calcula o preço de um determinado valor de robux em reais")
+    @app_commands.command(name="robux_price", description="Calcula o preço de um determinado valor de robux em reais")
     async def calculateRobuxPrice(self, interaction: discord.Interaction, amount: int):
         robuxPrice = calculateRobux(amount)
         robuxGroupPrice = robuxPrice[0]

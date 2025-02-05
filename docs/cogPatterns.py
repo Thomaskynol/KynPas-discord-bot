@@ -7,6 +7,8 @@ serverID = 123456789
 class cogName(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        
+    # commands go here
 
     async def cog_load(self):
         guild = discord.Object(id=serverID)
