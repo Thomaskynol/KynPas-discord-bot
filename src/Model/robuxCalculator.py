@@ -1,4 +1,4 @@
-from .robuxPrice import robuxPrice
+from .robuxPrice import robuxPriceWithoutTax, robuxPriceWithTax
 
 def calculateRobux(robuxAmount: int):
-    return robuxAmount * robuxPrice, robuxAmount * robuxPrice / 0.7
+    return robuxAmount * robuxPriceWithoutTax, robuxAmount/0.7 * robuxPriceWithTax
