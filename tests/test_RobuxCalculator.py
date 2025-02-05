@@ -1,7 +1,6 @@
 import sys
 import os
 sys.path.append(os.path.abspath(".."))
-#sys.path.append(os.path.abspath("src"))
 
 from src.Model.robuxPrice import robuxPriceWithTax, robuxPriceWithoutTax
 from src.Model.robuxCalculator import calculateRobux
