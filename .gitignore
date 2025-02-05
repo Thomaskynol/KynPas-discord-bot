@@ -1,7 +1,9 @@
 .vscode/
+
 venv/
-myBotInfo.py
-# Python cache
 __pycache__/
 *.py[cod]
 *$py.class
+
+myBotInfo.py
+robuxPrice.py

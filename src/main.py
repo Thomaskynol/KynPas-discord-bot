@@ -37,8 +37,6 @@ async def closeBot():
 def redirectSignalToCloseBot(signum, frame):
     asyncio.create_task(closeBot())
 
-
-
 signal.signal(signal.SIGINT, redirectSignalToCloseBot)
 try:
     bot.run(botToken)
