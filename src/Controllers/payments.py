@@ -3,10 +3,11 @@ from io import BytesIO
 import discord
 from discord.ext import commands
 from discord import app_commands
-
+import discord.utils
 from myBotInfo import myServerID
 
 from Model.generatePix import generatePix
+from Model.rolesPermissions import generatePayments as generatePaymentsRole
 
 class Payments(commands.Cog):
     def __init__(self, bot):
@@ -16,6 +17,10 @@ class Payments(commands.Cog):
     async def generatePixQRCODE(self, interaction: discord.Interaction, price: float, robux_amount: int):
         pixCopyPaste, pixQrCode = generatePix(price, robux_amount)
         
+        if not discord.utils.get(interaction.user.roles, name=generatePaymentsRole):
+            await interaction.response.send_message("Você não tem permissão para executar este comando.", ephemeral=True)
+            return
+            
         with BytesIO() as buffer:
             pixQrCode.save(buffer, format="PNG")
             buffer.seek(0)
