@@ -53,5 +53,8 @@ async def loadCogs():
         if filename.endswith('.py') and filename != '__init__.py':
             await bot.load_extension(f'Controllers.{filename[:-3]}')
             messagesForTerminal.loadedCogMessage(filename[:-3])
+            
+async def loadPersistence():
+    pass
 
 startBot()
